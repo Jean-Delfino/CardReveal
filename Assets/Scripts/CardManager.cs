@@ -1,4 +1,5 @@
 ﻿using System;
+using Layout;
 using Reuse.CameraControl;
 using Reuse.Patterns;
 using UnityEngine;
@@ -7,10 +8,11 @@ public class CardManager : Singleton<CardManager>
 {
     [SerializeField] private CardScoreController scoreController;
     [SerializeField] private CardAnimationController cardAnimationController;
-    [SerializeField] private LevelDefinition definition;
+
     [SerializeField] private DragMoveCamera dragCamera;
     [SerializeField] private Transform cardSpawnPoint;
     
+    private LevelDefinition _definition = null;
     private readonly CardSpawner _spawner = new();
     private readonly CardFacesSpawnController _spawnController = new();
     private readonly CardFacesRevealController _revealController = new();
@@ -20,15 +22,31 @@ public class CardManager : Singleton<CardManager>
     
     public static bool CanFlip => (Instance._canFlip);
 
-    public void StartCardSpawn()
+    public void SetLevel(LevelDefinition definition)
+    {
+        if (_definition != null) ResetLevel();
+        
+        _definition = definition;
+    }
+
+    private void ResetLevel()
     {
         cardAnimationController.ResetController();
-        _spawnController.ResetProcDefinition(definition);
+        _spawnController.ResetProcDefinition(_definition);
         _revealController.ResetCards();
         scoreController.ResetScore();
-
         DisableGameFlipAndCamera();
-        StartCoroutine(_spawner.SpawnCards(cardSpawnPoint, cardPrefab, definition));
+        ResetCameraPos();
+    }
+
+    private void ResetCameraPos()
+    {
+        if (dragCamera.HasBeenStarted) dragCamera.ResetPos();
+    }
+    
+    public void StartCardSpawn()
+    {
+        StartCoroutine(_spawner.SpawnCards(cardSpawnPoint, cardPrefab, _definition));
     }
 
     private void DisableGameFlipAndCamera()
@@ -46,7 +64,7 @@ public class CardManager : Singleton<CardManager>
     public void CardAnimationStart()
     {
         cardAnimationController.StartAnimation();
-        _spawnController.SetAllRemainingVisuals(definition);
+        _spawnController.SetAllRemainingVisuals(_definition);
     }
 
     public void CardAnimationAdd(Card card, Vector3 position, Vector3 initialPosition)
@@ -62,7 +80,7 @@ public class CardManager : Singleton<CardManager>
     public void SetCardVisual(Card card)
     {
         //The card back image is the same always, but it could change
-        _spawnController.AddCardVisual(card, definition);
+        _spawnController.AddCardVisual(card, _definition);
     }
 
     public void FlipCard(Card card)

@@ -21,9 +21,13 @@ namespace Reuse.CameraControl
 
         private bool _drag = false;
         public bool Drag => _drag;
+
+        private bool _hasBeenStarted = false;
+        public bool HasBeenStarted => _hasBeenStarted;
         private void Start()
         {
             _resetCamera = CameraController.GetMainCamera().transform.position;
+            _hasBeenStarted = true;
         }
 
         private void LateUpdate()
@@ -53,8 +57,18 @@ namespace Reuse.CameraControl
                 _drag = false;
             }
 
-            if (Input.GetMouseButton(1)) mainCamera.transform.position = _resetCamera;
+            if (Input.GetMouseButton(1)) ResetPos(mainCamera);
 
+        }
+
+        public void ResetPos()
+        {
+            CameraController.GetMainCamera().transform.position = _resetCamera;
+        }
+        
+        public void ResetPos(Camera mainCamera)
+        {
+            mainCamera.transform.position = _resetCamera;
         }
 
         public void DefineBounds(float minX, float minY, float maxX, float maxY)
