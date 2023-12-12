@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a925a7eea94cfa8e4290c6510771e6, type: 3}
+  m_Name: InputMapper
+  m_EditorClassIdentifier: 
+  visibleMapping:
+  - id: Horizontal
+    value:
+      positiveKey:
+        value: 100
+        keyName: Right
+      negativeKey:
+        value: 97
+        keyName: Left
+  - id: Vertical
+    value:
+      positiveKey:
+        value: 119
+        keyName: Forward
+      negativeKey:
+        value: 115
+        keyName: Backward
+  - id: Jump
+    value:
+      positiveKey:
+        value: 32
+        keyName: Jump
+      negativeKey:
+        value: 32
+        keyName: Jump
+  - id: Cast
+    value:
+      positiveKey:
+        value: 102
+        keyName: Cast
+      negativeKey:
+        value: 102
+        keyName: Cast
+  - id: Down
+    value:
+      positiveKey:
+        value: 115
+        keyName: S
+      negativeKey:
+        value: 274
+        keyName: Arrow Down
+  - id: Up
+    value:
+      positiveKey:
+        value: 119
+        keyName: W
+      negativeKey:
+        value: 273
+        keyName: Arrow Up
+  - id: Right
+    value:
+      positiveKey:
+        value: 100
+        keyName: D
+      negativeKey:
+        value: 275
+        keyName: Arrow Right
+  - id: Left
+    value:
+      positiveKey:
+        value: 97
+        keyName: A
+      negativeKey:
+        value: 276
+        keyName: Arrow Left
+  - id: Select
+    value:
+      positiveKey:
+        value: 13
+        keyName: Enter
+      negativeKey:
+        value: 32
+        keyName: Space
+  - id: CameraLock
+    value:
+      positiveKey:
+        value: 101
+        keyName: E
+      negativeKey:
+        value: 101
+        keyName: e
