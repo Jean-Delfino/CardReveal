@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Layout
 {
-    [CreateAssetMenu(fileName = "LevelDefinition", menuName = "CardGameDesign/World")]
+    [CreateAssetMenu(fileName = "World", menuName = "CardGameDesign/World")]
     public class World : ScriptableObject
     {
         [SerializeField] private List<Map> mapsConfiguration;
