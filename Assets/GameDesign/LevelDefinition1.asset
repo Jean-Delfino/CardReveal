@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ba7b9011b6ff942970db1ca54c466e, type: 3}
+  m_Name: LevelDefinition1
+  m_EditorClassIdentifier: 
+  level: {fileID: 2800000, guid: f7596ee404504384c92a607026619e28, type: 3}
+  notCardColor: {r: 0, g: 0, b: 0, a: 1}
+  includeEmptyColumns: 0
+  backCardPattern: {fileID: 21300000, guid: 3589d1582b55cf04eb40c3bd9f18b747, type: 3}
+  frontCardPattern:
+  - {fileID: 21300000, guid: 50a0665428d3cf84ca7c6ccdef48fe63, type: 3}
+  - {fileID: 21300000, guid: f8a3d26947b85bc4d8c7896c3aa087cd, type: 3}
+  - {fileID: 21300000, guid: ddfcf4f4a2abd274d8f7c193415e8700, type: 3}
+  - {fileID: 21300000, guid: 5310459678cc68441b92fbcfe0ccd1ff, type: 3}
+  xSpacing: 1.5
+  ySpacing: 2.2
+  xStartingPoint: -0.5
+  yStartingPoint: 0
