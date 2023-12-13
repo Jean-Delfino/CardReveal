@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef1db2e84c94f8e953a485c05f7ea52, type: 3}
   m_Name: FirstMap
   m_EditorClassIdentifier: 
-  levelConfiguration: []
-  mapName: 
+  levelConfiguration:
+  - {fileID: 11400000, guid: c9636d2c6dbd63849973f3379ab17e75, type: 2}
+  - {fileID: 11400000, guid: 31c669bcdeaf9e84fac748fcfa28adf5, type: 2}
+  - {fileID: 11400000, guid: 315fdb1089d2d5a4cb76b91dbfcecbc5, type: 2}
+  - {fileID: 11400000, guid: de04f3c1c1ef0564f8f6ea80eb7fb98f, type: 2}
+  - {fileID: 11400000, guid: 495ebf551f343694db3d186f48c19fa1, type: 2}
+  mapName: Basics

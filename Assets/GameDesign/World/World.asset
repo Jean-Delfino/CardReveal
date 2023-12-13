@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67a800359034367870542ca374893d3, type: 3}
   m_Name: World
   m_EditorClassIdentifier: 
-  mapsConfiguration: []
+  mapsConfiguration:
+  - {fileID: 11400000, guid: 3c9797a554e80b149b571f2d0b16f382, type: 2}
