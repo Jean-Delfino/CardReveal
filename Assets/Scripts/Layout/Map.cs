@@ -10,5 +10,6 @@ namespace Layout
         [SerializeField] private string mapName;
         
         public List<LevelDefinition> LevelConfiguration => levelConfiguration;
+        public string MapName => mapName;
     }
 }

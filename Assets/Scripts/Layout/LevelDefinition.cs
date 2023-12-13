@@ -25,6 +25,9 @@ namespace Layout
         [SerializeField] private float xStartingPoint = -0.5f;
         [SerializeField] private float yStartingPoint = 1f;
 
+        [Space] [Header("SAVE KEY")] [Space] 
+        
+        [SerializeField] private string saveName;
         public (float x, float y) GetSpacings()
         {
             return (xSpacing, ySpacing);
@@ -63,6 +66,11 @@ namespace Layout
         public int GetFaceImagesAmount()
         {
             return frontCardPattern.Length;
+        }
+
+        public string GetSaveName()
+        {
+            return saveName;
         }
     }
 }
