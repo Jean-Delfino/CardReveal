@@ -6,8 +6,19 @@ using Reuse.Patterns;
 using SaveGame;
 using UnityEngine;
 
+using GameState = CardGameTransitionController.GameState;
+
 public class CardManager : Singleton<CardManager>
 {
+    private static Dictionary<GameState, Action> transitions = new Dictionary<GameState, Action>
+    {
+        { GameState.None, WrongSetup },
+        { GameState.MapSelectionToGame, StartCardSpawn },
+        { GameState.QuitToMainMenu, DestroyCardGame },
+        { GameState.ReturnToMapSelection, DestroyCardGame }
+    };
+    
+    
     [SerializeField] private CardScoreController scoreController;
     [SerializeField] private CardAnimationController cardAnimationController;
 
@@ -122,4 +133,18 @@ public class CardManager : Singleton<CardManager>
         UtilCardSave.SetStartAmount(_definition.GetSaveName(), amount);
     }
 
+    public static void MakeTransition(GameState state)
+    {
+        transitions[state].Invoke();
+    }
+
+    private static void DestroyCardGame()
+    {
+        
+    }
+
+    private static void WrongSetup()
+    {
+        Debug.LogError("MISSING GAME STATE");
+    }
 }

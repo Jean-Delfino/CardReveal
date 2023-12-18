@@ -24,6 +24,8 @@ namespace Layout.UI
         private void OnClick()
         {
             CardManager.Instance.SetLevel(_level);
+            CardGameTransitionController.Instance.MakeTransition(CardGameTransitionController.GameState
+                .MapSelectionToGame);
         }
 
         public void Setup(LevelDefinition level, int levelIndex)
