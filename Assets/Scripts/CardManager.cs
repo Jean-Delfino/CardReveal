@@ -17,8 +17,8 @@ public class CardManager : Singleton<CardManager>
         { GameState.QuitToMainMenu, DestroyCardGame },
         { GameState.ReturnToMapSelection, DestroyCardGame }
     };
-    
-    
+
+    [SerializeField] private CardEndGameUIController endGameUIController;
     [SerializeField] private CardScoreController scoreController;
     [SerializeField] private CardAnimationController cardAnimationController;
 
@@ -105,6 +105,7 @@ public class CardManager : Singleton<CardManager>
         {
             //Logic for win game
             DisableGameFlipAndCamera();
+            scoreController.EndGame(endGameUIController.GetGameUI(true));
             return;
         }
         
@@ -112,6 +113,7 @@ public class CardManager : Singleton<CardManager>
         {
             //Logic for lose game
             DisableGameFlipAndCamera();
+            scoreController.EndGame(endGameUIController.GetGameUI(false));
         }
         
         _canFlip = res.canFlipNextCard;
