@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using SaveGame;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,11 @@ namespace Layout.UI
         
         [SerializeField] private Button button;
         private LevelDefinition _level;
+
+        public void OnEnable()
+        {
+            starImage.sprite = VisualProvider.Instance.GetStarSprite(UtilCardSave.GetStarAmount(_level.GetSaveName()));
+        }
 
         private void OnClick()
         {

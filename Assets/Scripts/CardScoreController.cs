@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SaveGame;
 using UI;
 using UnityEngine;
 
@@ -15,10 +16,10 @@ public enum ScoreType
 
 public enum WinScoreType
 {
-    None,
-    Bronze,
-    Silver,
-    Gold
+    None = 0,
+    Bronze = 1,
+    Silver = 2,
+    Gold = 3,
 }
 public class CardScoreController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class CardScoreController : MonoBehaviour
     }
 
     [Serializable]
-    public class WinScoreType
+    public class WinScoreTypeLimited
     {
         public WinScoreType type;
         [Range(0,1)] public float min;
@@ -40,6 +41,7 @@ public class CardScoreController : MonoBehaviour
     [Space] [Header("SCORE CONFIGURATION")] [Space]
     
     [SerializeField] private List<ScoreByType> typePoints;
+    [SerializeField] private List<WinScoreTypeLimited> winsType;
     [SerializeField] private float minimumUntilAutoLose = -800;
     
     private float _score;
@@ -96,5 +98,21 @@ public class CardScoreController : MonoBehaviour
     public void EndGame(CardScoreEndGameUI ui)
     {
         scoreUI.gameObject.SetActive(false);
+
+        if (_score < 0) return;
+
+        CardManager.Instance.SetStars(FindStars());
+    }
+
+    private int FindStars()
+    {
+        var percentage = _score / _maxScore;
+
+        foreach (var score in winsType)
+        {
+            if (percentage >= score.min && percentage < score.max) return ((int) score.type);
+        }
+
+        return -1;
     }
 }

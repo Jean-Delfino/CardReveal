@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Layout;
 using Reuse.CameraControl;
 using Reuse.Patterns;
+using SaveGame;
 using UnityEngine;
 
 public class CardManager : Singleton<CardManager>
@@ -24,8 +26,6 @@ public class CardManager : Singleton<CardManager>
 
     public void SetLevel(LevelDefinition definition)
     {
-        if (_definition != null) ResetLevel();
-        
         _definition = definition;
     }
 
@@ -44,9 +44,10 @@ public class CardManager : Singleton<CardManager>
         if (dragCamera.HasBeenStarted) dragCamera.ResetPos();
     }
     
-    public void StartCardSpawn()
+    private static void StartCardSpawn()
     {
-        StartCoroutine(_spawner.SpawnCards(cardSpawnPoint, cardPrefab, _definition));
+        Instance.ResetLevel();
+        Instance.StartCoroutine(Instance._spawner.SpawnCards(Instance.cardSpawnPoint, Instance.cardPrefab, Instance._definition));
     }
 
     private void DisableGameFlipAndCamera()
@@ -115,4 +116,10 @@ public class CardManager : Singleton<CardManager>
         _revealController.SetCardAmount(cardAmount);
         scoreController.SetMaxScore(_revealController.GetCardCombinationAmount());
     }
+
+    public void SetStars(int amount)
+    {
+        UtilCardSave.SetStartAmount(_definition.GetSaveName(), amount);
+    }
+
 }

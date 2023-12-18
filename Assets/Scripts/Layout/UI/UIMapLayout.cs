@@ -15,6 +15,8 @@ namespace Layout.UI
             {
                 var levelClone = Instantiate(levelLayout, levelSpawn);
                 levelClone.Setup(level, levelCount);
+                
+                levelClone.gameObject.SetActive(true);
                 levelCount++;
             }
             
