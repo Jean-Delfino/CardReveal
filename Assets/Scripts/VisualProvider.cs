@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
+[CreateAssetMenu(fileName = "VisualProvider", menuName = "Game Design/VisualProvider")]
 public class VisualProvider : ScriptableObject
 {
     private static VisualProvider _instance;
@@ -14,8 +14,6 @@ public class VisualProvider : ScriptableObject
 
             return _instance;
         }
-        
-
     }
     
     [SerializeField] private Sprite[] starSprites;
