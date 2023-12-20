@@ -73,7 +73,7 @@ public class CardScoreController : MonoBehaviour
         _score = 0;
         
         scoreUI.gameObject.SetActive(true);
-        scoreUI.ShowTextScore(0);
+        scoreUI.ResetScore(0);
     }
 
     public void SetMaxScore(int cardCombinationAmount)
@@ -91,6 +91,7 @@ public class CardScoreController : MonoBehaviour
 
         _reveals[type]++;
         scoreUI.ShowTextScore(_score);
+        scoreUI.ShowScoreType(type);
         
         return _score < minimumUntilAutoLose;
     }
