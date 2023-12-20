@@ -28,10 +28,10 @@ namespace Reuse.Utils
         public static (float minX, float minY, float maxX, float maxY) GetSimpleCameraBoundsBasedOnWorldPos(float minX, float minY, float maxX, float maxY)
         {
             var mainCamera = CameraController.GetMainCamera();
-            var verticalExtent = mainCamera.orthographicSize;
-            var horizontalExtent = verticalExtent * mainCamera.aspect;
+            var verticalExtent = mainCamera.orthographicSize / 2;
+            var horizontalExtent = (verticalExtent * mainCamera.aspect) / 2;
 
-            return (minX + horizontalExtent, minY + verticalExtent, maxX - horizontalExtent, maxY - verticalExtent);
+            return (minX + (horizontalExtent), minY + (verticalExtent), maxX - (horizontalExtent), maxY - (verticalExtent));
         }
     }
 }

@@ -16,6 +16,9 @@ namespace Reuse.CameraControl
         [SerializeField] private Vector2 minBoundIncrease;
         [SerializeField] private Vector2 maxBoundIncrease;
 
+        [SerializeField] private Vector2 minBoundToMax = Vector2.zero;
+        [SerializeField] private Vector2 minBoundToMin = Vector2.zero;
+
         private Vector2 _currentMinBounds;
         private Vector2 _currentMaxBounds;
 
@@ -75,8 +78,13 @@ namespace Reuse.CameraControl
         {
             var bounds = UtilCamera.GetSimpleCameraBoundsBasedOnWorldPos(minX, minY, maxX, maxY);
 
-            _currentMinBounds = new Vector2(bounds.minX + minBoundIncrease.x, bounds.minY + minBoundIncrease.y);
-            _currentMaxBounds = new Vector2(Mathf.Max(0,bounds.maxX + maxBoundIncrease.x), Mathf.Max(0,bounds.maxY + maxBoundIncrease.y));
+            _currentMinBounds = new Vector2(
+                Mathf.Min(minBoundToMin.x, bounds.minX + minBoundIncrease.x), 
+                Mathf.Min(minBoundToMin.y, bounds.minY + minBoundIncrease.y));
+            
+            _currentMaxBounds = new Vector2(
+                Mathf.Max(minBoundToMax.x,bounds.maxX + maxBoundIncrease.x), 
+                Mathf.Max( minBoundToMax.y,bounds.maxY + maxBoundIncrease.y));
         }
     }
 }
