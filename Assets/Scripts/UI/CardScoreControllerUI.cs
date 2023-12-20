@@ -26,7 +26,6 @@ namespace UI
         public void ResetScore(int defaultValue)
         {
             ShowTextScore(defaultValue);
-            scoreTypeText.gameObject.SetActive(false);
         }
         public void ShowTextScore(float value)
         {
