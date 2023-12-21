@@ -14,6 +14,7 @@ namespace SaveGame
             if (GetStarAmount(key) > value) return;
             
             PlayerPrefs.SetInt(key, value);
+            PlayerPrefs.Save();
         }
     }
 }
