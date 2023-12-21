@@ -101,8 +101,10 @@ public class CardScoreController : MonoBehaviour
         scoreUI.gameObject.SetActive(false);
 
         if (_score < 0) return;
-
-        CardManager.Instance.SetStars(FindStars());
+        var star = FindStars();
+        
+        CardManager.Instance.SetStars(star);
+        ui.Setup(star, _score, _reveals);
     }
 
     private int FindStars()
