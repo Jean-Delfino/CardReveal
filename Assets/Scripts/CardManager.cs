@@ -15,7 +15,8 @@ public class CardManager : Singleton<CardManager>
         { GameState.None, WrongSetup },
         { GameState.MapSelectionToGame, StartCardSpawn },
         { GameState.QuitToMainMenu, DestroyCardGame },
-        { GameState.ReturnToMapSelection, DestroyCardGame }
+        { GameState.ReturnToMapSelection, DestroyCardGame },
+        { GameState.PlayNextLevel ,PlayNextLevel}
     };
 
     [SerializeField] private CardEndGameUIController endGameUIController;
@@ -159,8 +160,19 @@ public class CardManager : Singleton<CardManager>
         Debug.LogError("MISSING GAME STATE");
     }
 
+    private static void PlayNextLevel()
+    {
+        (Instance._levelDefinition, Instance._actualMap) = Instance.GetNextLevel();
+        StartCardSpawn();
+    }
+
     public bool HasNextLevel()
     {
-        return true;
+        return UtilWorlds.FindNextLevel(_actualWorld,_actualMap, _levelDefinition).level != null;
+    }
+
+    public (LevelDefinition level, Map map) GetNextLevel()
+    {
+        return UtilWorlds.FindNextLevel(_actualWorld, _actualMap, _levelDefinition);
     }
 }

@@ -12,6 +12,7 @@ public class CardGameTransitionController : Singleton<CardGameTransitionControll
         MapSelectionToGame,
         ReturnToMapSelection,
         QuitToMainMenu,
+        PlayNextLevel,
     }
     
     [Serializable]
