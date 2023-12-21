@@ -35,6 +35,8 @@ namespace UI
 
                 scoreGroup.text.text = $"{scoreGroup.prefix}{amount}{scoreGroup.suffix}";
             }
+            
+            gameObject.SetActive(true);
         }
     } 
 }
