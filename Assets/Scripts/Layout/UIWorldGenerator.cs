@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Layout.UI;
 using UnityEngine;
 
@@ -15,6 +16,13 @@ namespace Layout
 
         public override void GenerateWorld()
         {
+            StartCoroutine(WaitAndSet());
+        }
+
+        private IEnumerator WaitAndSet()
+        {
+            yield return new WaitUntil(() => CardManager.Instance != null);
+            CardManager.Instance.SetWorld(world);
             layout.SpawnWorld(world);  
         }
     }

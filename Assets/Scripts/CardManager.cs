@@ -24,8 +24,11 @@ public class CardManager : Singleton<CardManager>
 
     [SerializeField] private DragMoveCamera dragCamera;
     [SerializeField] private Transform cardSpawnPoint;
+
+    private World _actualWorld;
+    private Map _actualMap;
+    private LevelDefinition _levelDefinition = null;
     
-    private LevelDefinition _definition = null;
     private readonly CardSpawner _spawner = new();
     private readonly CardFacesSpawnController _spawnController = new();
     private readonly CardFacesRevealController _revealController = new();
@@ -35,15 +38,21 @@ public class CardManager : Singleton<CardManager>
     
     public static bool CanFlip => (Instance._canFlip);
 
-    public void SetLevel(LevelDefinition definition)
+    public void SetLevel(Map map, LevelDefinition definition)
     {
-        _definition = definition;
+        _actualMap = map;
+        _levelDefinition = definition;
+    }
+
+    public void SetWorld(World world)
+    {
+        _actualWorld = world;
     }
 
     private void ResetLevel()
     {
         cardAnimationController.ResetController();
-        _spawnController.ResetProcDefinition(_definition);
+        _spawnController.ResetProcDefinition(_levelDefinition);
         _revealController.ResetCards();
         scoreController.ResetScore();
         DisableGameFlipAndCamera();
@@ -58,7 +67,7 @@ public class CardManager : Singleton<CardManager>
     private static void StartCardSpawn()
     {
         Instance.ResetLevel();
-        Instance.StartCoroutine(Instance._spawner.SpawnCards(Instance.cardSpawnPoint, Instance.cardPrefab, Instance._definition));
+        Instance.StartCoroutine(Instance._spawner.SpawnCards(Instance.cardSpawnPoint, Instance.cardPrefab, Instance._levelDefinition));
     }
 
     private void DisableGameFlipAndCamera()
@@ -76,7 +85,7 @@ public class CardManager : Singleton<CardManager>
     public void CardAnimationStart()
     {
         cardAnimationController.StartAnimation();
-        _spawnController.SetAllRemainingVisuals(_definition);
+        _spawnController.SetAllRemainingVisuals(_levelDefinition);
     }
 
     public void CardAnimationAdd(Card card, Vector3 position, Vector3 initialPosition)
@@ -92,7 +101,7 @@ public class CardManager : Singleton<CardManager>
     public void SetCardVisual(Card card)
     {
         //The card back image is the same always, but it could change
-        _spawnController.AddCardVisual(card, _definition);
+        _spawnController.AddCardVisual(card, _levelDefinition);
     }
 
     public void FlipCard(Card card)
@@ -132,7 +141,7 @@ public class CardManager : Singleton<CardManager>
 
     public void SetStars(int amount)
     {
-        UtilCardSave.SetStartAmount(_definition.GetSaveName(), amount);
+        UtilCardSave.SetStartAmount(_levelDefinition.GetSaveName(), amount);
     }
 
     public static void MakeTransition(GameState state)
@@ -148,5 +157,10 @@ public class CardManager : Singleton<CardManager>
     private static void WrongSetup()
     {
         Debug.LogError("MISSING GAME STATE");
+    }
+
+    public bool HasNextLevel()
+    {
+        return true;
     }
 }

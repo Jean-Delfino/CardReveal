@@ -15,7 +15,7 @@ namespace Layout.UI
         
         [SerializeField] private Button button;
         private LevelDefinition _level;
-
+        private Map _map;
         public void OnEnable()
         {
             starImage.sprite = VisualProvider.Instance.GetStarSprite(UtilCardSave.GetStarAmount(_level.GetSaveName()));
@@ -23,13 +23,14 @@ namespace Layout.UI
 
         private void OnClick()
         {
-            CardManager.Instance.SetLevel(_level);
+            CardManager.Instance.SetLevel(_map, _level);
             CardGameTransitionController.Instance.MakeTransition(CardGameTransitionController.GameState
                 .MapSelectionToGame);
         }
 
-        public void Setup(LevelDefinition level, int levelIndex)
+        public void Setup(Map map, LevelDefinition level, int levelIndex)
         {
+            _map = map;
             _level = level;
             button.onClick.AddListener(OnClick);
 

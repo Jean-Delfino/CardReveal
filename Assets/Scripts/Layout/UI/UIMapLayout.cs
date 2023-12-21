@@ -14,7 +14,7 @@ namespace Layout.UI
             foreach (var level in map.LevelConfiguration)
             {
                 var levelClone = Instantiate(levelLayout, levelSpawn);
-                levelClone.Setup(level, levelCount);
+                levelClone.Setup(map, level, levelCount);
                 
                 levelClone.gameObject.SetActive(true);
                 levelCount++;
