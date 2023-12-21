@@ -48,5 +48,26 @@ namespace UI
             
             gameObject.SetActive(true);
         }
+
+        public void GoNextLevel()
+        {
+            CallTransition(CardGameTransitionController.GameState.PlayNextLevel);
+        }
+        
+        public void BackToMapSelection()
+        {
+            CallTransition(CardGameTransitionController.GameState.ReturnToMapSelection);
+        }
+        
+        public void RestartLevel()
+        {
+            CallTransition(CardGameTransitionController.GameState.RestartLevel);
+        }
+
+        private void CallTransition(CardGameTransitionController.GameState state)
+        {
+            CardGameTransitionController.Instance.MakeTransition(state);
+            gameObject.SetActive(false);
+        }
     } 
 }
