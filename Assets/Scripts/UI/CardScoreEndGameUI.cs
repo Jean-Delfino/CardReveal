@@ -22,6 +22,16 @@ namespace UI
 
         [SerializeField] private ScoreTypeText[] texts;
         [SerializeField] private TextMeshProUGUI scoreText;
+
+        [SerializeField] private Button nextMapButton;
+
+        private void OnEnable()
+        {
+            if(nextMapButton == null) return;
+
+            nextMapButton.enabled = CardManager.Instance.HasNextLevel();
+        }
+
         public void Setup(int star, float score, Dictionary<ScoreType, int> reveals)
         {
             starImage.sprite = VisualProvider.Instance.GetStarSprite(star);
@@ -31,7 +41,7 @@ namespace UI
             
             foreach (var scoreGroup in texts)
             {
-                amount = reveals.ContainsKey(scoreGroup.type) ? 0 : reveals[scoreGroup.type];
+                amount = reveals.ContainsKey(scoreGroup.type) ? reveals[scoreGroup.type] : 0;
 
                 scoreGroup.text.text = $"{scoreGroup.prefix}{amount}{scoreGroup.suffix}";
             }
