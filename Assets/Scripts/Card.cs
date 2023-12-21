@@ -9,6 +9,10 @@ public class Card : MonoBehaviour
     
     private int _frontCardIndex;
     private bool _mouseDown = false;
+
+    private bool _totallyFlipped = false;
+
+    public bool HasTotallyFlipped => _totallyFlipped;
     public void OnMouseDown()
     {
         _mouseDown = true;
@@ -18,6 +22,7 @@ public class Card : MonoBehaviour
     {
         if (_mouseDown && CardManager.CanFlip)
         {
+            CardManager.Instance.FlipCard(this);
             cardAnimation.Flip(true);
         }
 
@@ -48,12 +53,14 @@ public class Card : MonoBehaviour
 
     public void UnFlipCard()
     {
+        _totallyFlipped = false;
         cardAnimation.Flip(false);
     }
 
     public void SendFlippedCardToCardManager()
     {
-        CardManager.Instance.FlipCard(this);
+        _totallyFlipped = true;
+        CardManager.Instance.CheckFlippedCards();
     }
 
     public void SendUnFlippedCardToCardManager()

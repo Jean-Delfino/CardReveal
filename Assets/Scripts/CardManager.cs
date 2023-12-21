@@ -108,10 +108,18 @@ public class CardManager : Singleton<CardManager>
 
     public void FlipCard(Card card)
     {
-        var res = _revealController.SetFlippedCard(card);
+        _canFlip  = _revealController.SetFlippedCard(card);
+    }
+
+    public void CheckFlippedCards()
+    {
+        if(!_revealController.HasAllCardsFlipped()) return;
         
+        var res = _revealController.CheckFlippedCards();
+
+        _canFlip = res.canFlipRest;
         var lose = scoreController.AddScore(res.scoreType);
-        
+
         if (res.gameWon)
         {
             //Logic for win game
@@ -126,10 +134,7 @@ public class CardManager : Singleton<CardManager>
             DisableGameFlipAndCamera();
             scoreController.EndGame(endGameUIController.GetGameUI(false));
         }
-        
-        _canFlip = res.canFlipNextCard;
-    }
-
+    } 
     public void RevertCard(Card card)
     {
         _canFlip = _revealController.SetCardNormalState();

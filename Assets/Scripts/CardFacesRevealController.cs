@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class CardFacesRevealController
 {
     //For our scope this is very simple and OK
     private Card _card1;
-
+    private Card _card2;
+    
     private int _cardAmount;
     private int _correctRevealedCards;
 
@@ -17,35 +19,52 @@ public class CardFacesRevealController
         _alreadySeenCards.Clear();
     }
     
-    public (bool canFlipNextCard, bool gameWon, ScoreType scoreType) SetFlippedCard(Card card)
+    public (bool canFlipRest, bool gameWon, ScoreType scoreType) CheckFlippedCards()
     {
-        if (card == _card1) return (true,false, ScoreType.None);
+        ScoreType score;
+        if (_card1.GetFaceIndex() == _card2.GetFaceIndex())
+        {
+            _card1.ShowMatchingCardEffect();
+            _card2.ShowMatchingCardEffect();
+            score = FindScoreType(true);
+            _card1 = _card2 = null;
+            
+            _correctRevealedCards += 2;
+            
+            return (true, CheckVictory(), score);
+        }
+        
+        score = FindScoreType(false);
+        
+        _alreadySeenCards.Add(_card1);
+        _alreadySeenCards.Add(_card2);
+        
+        _card1.UnFlipCard();
+        _card2.UnFlipCard();
 
+        _card2 = null;
+        
+        return (false, false, score);
+    }
+
+    public bool SetFlippedCard(Card card)
+    {
         if (_card1 == null)
         {
             _card1 = card;
-            return (true,false, ScoreType.None);
+            return true;
         }
-
-        if (_card1.GetFaceIndex() == card.GetFaceIndex())
-        {
-            _card1.ShowMatchingCardEffect();
-            card.ShowMatchingCardEffect();
-            _card1 = null;
-
-            _correctRevealedCards += 2;
-            
-            return (true, CheckVictory(), FindScoreType(card, true));
-        }
-
-        var findScore = FindScoreType(card, false);
-        _card1.UnFlipCard();
-        card.UnFlipCard();
-
-        _alreadySeenCards.Add(_card1);
-        _alreadySeenCards.Add(card);
         
-        return (false, false, findScore);
+        if (card == _card1) return true;
+
+        _card2 = card;
+        
+        return false;
+    }
+
+    public bool HasAllCardsFlipped()
+    {
+        return _card1 != null && _card2 != null && _card1.HasTotallyFlipped && _card2.HasTotallyFlipped;
     }
     
     public bool SetCardNormalState()
@@ -69,9 +88,9 @@ public class CardFacesRevealController
         return _correctRevealedCards == _cardAmount;
     }
 
-    private ScoreType FindScoreType(Card card, bool reveal)
+    private ScoreType FindScoreType(bool reveal)
     {
-        var seen = _alreadySeenCards.Contains(card) || _alreadySeenCards.Contains(_card1);
+        var seen = _alreadySeenCards.Contains(_card2) || _alreadySeenCards.Contains(_card1);
         
         if (reveal)
         {
