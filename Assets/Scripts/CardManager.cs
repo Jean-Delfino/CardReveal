@@ -16,7 +16,8 @@ public class CardManager : Singleton<CardManager>
         { GameState.MapSelectionToGame, StartCardSpawn },
         { GameState.QuitToMainMenu, DestroyCardGame },
         { GameState.ReturnToMapSelection, DestroyCardGame },
-        { GameState.PlayNextLevel ,PlayNextLevel}
+        { GameState.PlayNextLevel ,PlayNextLevel},
+        { GameState.RestartLevel , StartCardSpawn}
     };
 
     [SerializeField] private CardEndGameUIController endGameUIController;

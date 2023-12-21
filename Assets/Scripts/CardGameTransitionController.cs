@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using Reuse.Patterns;
 using UnityEngine;
-
+using Reuse.Patterns;
 public class CardGameTransitionController : Singleton<CardGameTransitionController>
 {
     public enum GameState
@@ -13,6 +12,7 @@ public class CardGameTransitionController : Singleton<CardGameTransitionControll
         ReturnToMapSelection,
         QuitToMainMenu,
         PlayNextLevel,
+        RestartLevel,
     }
     
     [Serializable]
@@ -42,7 +42,8 @@ public class CardGameTransitionController : Singleton<CardGameTransitionControll
     private IEnumerator MakeTransition(TransitionGame transitionGame)
     {
         _isInTransition = true;
-        transitionGame.toTrigger.SetTrigger(transitionGame.triggerName);
+        if(!string.IsNullOrEmpty(transitionGame.triggerName)) transitionGame.toTrigger.SetTrigger(transitionGame.triggerName);
+        
         yield return new WaitForSeconds(transitionGame.callManagerTime * transitionGame.animationSpeed);
         CardManager.MakeTransition(transitionGame.state);
         _isInTransition = false;
