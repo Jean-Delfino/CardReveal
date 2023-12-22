@@ -59,7 +59,7 @@ public class CardSpawner
         return cardStartingPointY + ((y - middlePointY) * cardSpacingY);
     } 
 
-    private void SetMiddlePoint(ref (int x, int y) middlePoint, UtilImages.ImageResult cardLayout)
+    private void SetMiddlePoint(ref (int x, int y) middlePoint, UtilImage.ImageResult cardLayout)
     {
         middlePoint.x = Mathf.FloorToInt(cardLayout.MaxCol / 2.0f);
         middlePoint.y = Mathf.FloorToInt(cardLayout.MaxRow / 2.0f);

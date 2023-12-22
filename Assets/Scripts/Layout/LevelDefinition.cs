@@ -48,9 +48,9 @@ namespace Layout
             return yStartingPoint;
         }
 
-        public UtilImages.ImageResult GetLevelLayout()
+        public UtilImage.ImageResult GetLevelLayout()
         {
-            return UtilImages.GetDifferentPixelsThenColor(level, notCardColor, includeEmptyColumns);
+            return UtilImage.GetDifferentPixelsThenColor(level, notCardColor, includeEmptyColumns);
         }
 
         public Sprite GetBackImage()
