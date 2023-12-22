@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Reuse.Utils
 {
-    public static class UtilImages
+    public static class UtilImage
     {
         public class Block
         {
