@@ -13,6 +13,8 @@ public class CardGameTransitionController : Singleton<CardGameTransitionControll
         QuitToMainMenu,
         PlayNextLevel,
         RestartLevel,
+        MapSelectionToMenu,
+        QuitGame,
     }
     
     [Serializable]
@@ -24,6 +26,7 @@ public class CardGameTransitionController : Singleton<CardGameTransitionControll
         [Space] [Header("THIS IS BASED ON THE ANIMATOR TIME AND SPEED")]
         public float callManagerTime;
         public float animationSpeed = 1f;
+        public bool needToCallManager = true;
         
         public Animator toTrigger;
     }
@@ -45,7 +48,7 @@ public class CardGameTransitionController : Singleton<CardGameTransitionControll
         if(!string.IsNullOrEmpty(transitionGame.triggerName)) transitionGame.toTrigger.SetTrigger(transitionGame.triggerName);
         
         yield return new WaitForSeconds(transitionGame.callManagerTime * transitionGame.animationSpeed);
-        CardManager.MakeTransition(transitionGame.state);
+        if(transitionGame.needToCallManager) CardManager.MakeTransition(transitionGame.state);
         _isInTransition = false;
     }
 }
