@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Reuse.Sound;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class CardFacesRevealController
 {
+    private const string CardMatchSoundVFX = "card_match";
     //For our scope this is very simple and OK
     private Card _card1;
     private Card _card2;
@@ -24,6 +26,8 @@ public class CardFacesRevealController
         ScoreType score;
         if (_card1.GetFaceIndex() == _card2.GetFaceIndex())
         {
+            SoundManager.Instance.PlayAudio(CardMatchSoundVFX);
+            
             _card1.ShowMatchingCardEffect();
             _card2.ShowMatchingCardEffect();
             score = FindScoreType(true);

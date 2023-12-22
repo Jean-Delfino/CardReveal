@@ -1,8 +1,11 @@
 ﻿using System;
+using Reuse.Sound;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    private const string CardFlipSoundVFX = "card_flip";
+
     [SerializeField] private CardAnimation cardAnimation;
     [SerializeField] private SpriteRenderer backImage;
     [SerializeField] private SpriteRenderer frontImage;
@@ -20,11 +23,7 @@ public class Card : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if (_mouseDown && CardManager.CanFlip)
-        {
-            CardManager.Instance.FlipCard(this);
-            cardAnimation.Flip(true);
-        }
+        if (_mouseDown && CardManager.CanFlip) FlipCard();
 
         _mouseDown = false;
     }
@@ -51,8 +50,16 @@ public class Card : MonoBehaviour
         cardAnimation.ShowMatchingCardAnimation();
     }
 
+    private void FlipCard()
+    {
+        SoundManager.Instance.PlayAudio(CardFlipSoundVFX);
+        CardManager.Instance.FlipCard(this);
+        cardAnimation.Flip(true);
+    }
+
     public void UnFlipCard()
     {
+        SoundManager.Instance.PlayAudio(CardFlipSoundVFX);
         _totallyFlipped = false;
         cardAnimation.Flip(false);
     }
