@@ -10,7 +10,7 @@ namespace Reuse.UI
         [SerializeField] private string triggerParameter;
         
         public override void Execute(){
-            if(animator) animator.SetTrigger(triggerParameter);
+            if(animator && !string.IsNullOrEmpty(triggerParameter)) animator.SetTrigger(triggerParameter);
             base.Execute();
         }
     }
