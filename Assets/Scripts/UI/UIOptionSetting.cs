@@ -13,10 +13,17 @@ namespace UI
         {
             public float minValue;
             public float maxValue;
-
+            public float defaultValue = 0.8f;
             public float GetLimit(float value)
             {
                 return Mathf.Lerp(minValue, maxValue, value);
+            }
+            
+            public float GetPercentage(float value)
+            {
+                var clampedValue = Mathf.Clamp(value, minValue, maxValue);
+
+                return ((clampedValue - minValue) / (maxValue - minValue));
             }
         }
         
@@ -52,15 +59,21 @@ namespace UI
             sfxSlider.onValueChanged.AddListener(SoundSliderValueChanged);
             cameraMovementSensibility.onValueChanged.AddListener(CameraControlSensibilitySliderValueChanged);
 
-            SetSaveValues();
         }
         
+        //Weird but necessary but fix because of the AudioMixer
+        private void Start()
+        {
+            SetSaveValues();
+        }
+
         //This is the easiest way definitively, but also not the best
         public void Enable()
         {
-            musicComponent.SetComponent(musicSlider.value = UtilCardSave.LoadMusic());
-            soundComponent.SetComponent(sfxSlider.value = UtilCardSave.LoadSfx());
-            cameraControlSensibilityComponent.SetComponent(cameraMovementSensibility.value = UtilCardSave.LoadSensibility());
+            musicComponent.SetComponent(musicSlider.value = UtilCardSave.LoadMusic(musicLimits.defaultValue));
+            soundComponent.SetComponent(sfxSlider.value = UtilCardSave.LoadSfx(sfxLimits.defaultValue));
+            cameraControlSensibilityComponent.SetComponent(cameraMovementSensibility.value = 
+                cameraMovementLimits.GetPercentage(UtilCardSave.LoadSensibility(cameraMovementLimits.defaultValue)));
             
             visual.SetActive(true);
         }
@@ -69,7 +82,9 @@ namespace UI
         {
             UtilCardSave.SaveMusic(musicSlider.value);
             UtilCardSave.SaveSfx(sfxSlider.value);
-            UtilCardSave.SaveSensibility(cameraMovementSensibility.value);
+            
+            //Easier to save the value
+            UtilCardSave.SaveSensibility(cameraMovementLimits.GetLimit(cameraMovementSensibility.value));
 
             visual.SetActive(false);
         }
@@ -77,8 +92,8 @@ namespace UI
         //Also the easiest way, but not the best
         private void SetSaveValues()
         {
-            mainMixer.SetFloat("BGM", musicLimits.GetLimit(UtilCardSave.LoadMusic()));
-            mainMixer.SetFloat("SFX", sfxLimits.GetLimit(UtilCardSave.LoadSfx()));
+            mainMixer.SetFloat("BGM", musicLimits.GetLimit(UtilCardSave.LoadMusic(musicLimits.defaultValue)));
+            mainMixer.SetFloat("SFX", sfxLimits.GetLimit(UtilCardSave.LoadSfx(sfxLimits.defaultValue)));
             
             visual.SetActive(false);
         }
