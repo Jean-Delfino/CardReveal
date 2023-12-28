@@ -176,7 +176,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 88.3, y: -88.3}
-  m_SizeDelta: {x: 176.6, y: 0}
+  m_SizeDelta: {x: 176.6, y: 176.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2462200545616544665
 CanvasRenderer:
@@ -245,6 +245,7 @@ MonoBehaviour:
   levelName: {fileID: 6329576161540010907}
   starImage: {fileID: 7600128324743147842}
   button: {fileID: 7023052152408052436}
+  clickButtonAudio: click_wood
 --- !u!114 &7023052152408052436
 MonoBehaviour:
   m_ObjectHideFlags: 0
