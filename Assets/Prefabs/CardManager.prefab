@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2749732095928019921}
   - component: {fileID: 2749732095928019922}
   - component: {fileID: 2749732095928019951}
+  - component: {fileID: 1710241185}
+  - component: {fileID: 1710241189}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -65,9 +67,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnLoad: 1
+  endGameUIController: {fileID: 1710241189}
   scoreController: {fileID: 2749732095928019951}
   cardAnimationController: {fileID: 2749732095928019921}
-  definition: {fileID: 11400000, guid: 495ebf551f343694db3d186f48c19fa1, type: 2}
   dragCamera: {fileID: 0}
   cardSpawnPoint: {fileID: 0}
   cardPrefab: {fileID: 8990823471414210851, guid: f884f5ef0b0cbb74bb75ac151c1d13ee, type: 3}
@@ -92,5 +94,76 @@ MonoBehaviour:
     score: -100
   - type: 4
     score: 0
+  winsType:
+  - type: 0
+    min: 0
+    max: 0.25
+  - type: 1
+    min: 0.25
+    max: 0.5
+  - type: 2
+    min: 0.5
+    max: 0.75
+  - type: 3
+    min: 0.75
+    max: 1
   minimumUntilAutoLose: -800
   scoreUI: {fileID: 0}
+--- !u!114 &1710241185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749732095928019923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bf8bddac3648fd99a2474c3fffd657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyOnLoad: 1
+  transitions:
+  - state: 1
+    triggerName: Game
+    callManagerTime: 1.1
+    animationSpeed: 1
+    needToCallManager: 1
+    toTrigger: {fileID: 0}
+  - state: 2
+    triggerName: MapSelection
+    callManagerTime: 1.1
+    animationSpeed: 1
+    needToCallManager: 1
+    toTrigger: {fileID: 0}
+  - state: 4
+    triggerName: 
+    callManagerTime: 0
+    animationSpeed: 1
+    needToCallManager: 1
+    toTrigger: {fileID: 0}
+  - state: 5
+    triggerName: 
+    callManagerTime: 0
+    animationSpeed: 1
+    needToCallManager: 1
+    toTrigger: {fileID: 0}
+  - state: 6
+    triggerName: MainMenu
+    callManagerTime: 0
+    animationSpeed: 1
+    needToCallManager: 0
+    toTrigger: {fileID: 0}
+--- !u!114 &1710241189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749732095928019923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0740b4d9a7a4733895ec281b1d1182e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loseGameUI: {fileID: 0}
+  winGameUI: {fileID: 0}
