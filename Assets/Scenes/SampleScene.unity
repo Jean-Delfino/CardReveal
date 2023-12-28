@@ -2548,7 +2548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11097c5e886b456e9602e26253c07d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibilityControl: -0.5
+  sensibilityControl: -1
   minBoundIncrease: {x: -1, y: -1.25}
   maxBoundIncrease: {x: 1, y: 1.25}
   minBoundToMax: {x: 0, y: 0}
