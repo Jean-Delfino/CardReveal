@@ -1,4 +1,6 @@
-﻿using Reuse.Utils;
+﻿using System;
+using System.Collections.Generic;
+using Reuse.Utils;
 using UnityEngine;
 
 //GameDevBox
@@ -27,6 +29,8 @@ namespace Reuse.CameraControl
 
         private bool _hasBeenStarted = false;
         public bool HasBeenStarted => _hasBeenStarted;
+        
+        private readonly HashSet<Func<float>> _multiplySensibility = new();
         private void Start()
         {
             _resetCamera = CameraController.GetMainCamera().transform.position;
@@ -41,7 +45,7 @@ namespace Reuse.CameraControl
             {
                 var newMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 var cameraTransform = mainCamera.transform;
-                var pos = cameraTransform.position + ((newMousePos - _mousePos) * sensibilityControl);
+                var pos = cameraTransform.position + ((newMousePos - _mousePos) * GetSensibility());
 
                 cameraTransform.position = new Vector3(
                     Mathf.Clamp(pos.x, _currentMinBounds.x, _currentMaxBounds.x),
@@ -85,6 +89,23 @@ namespace Reuse.CameraControl
             _currentMaxBounds = new Vector2(
                 Mathf.Max(minBoundToMax.x,bounds.maxX + maxBoundIncrease.x), 
                 Mathf.Max( minBoundToMax.y,bounds.maxY + maxBoundIncrease.y));
+        }
+
+        public void AddSensibilityModifier(Func<float> modifier)
+        {
+            _multiplySensibility.Add(modifier);
+        }
+
+        public float GetSensibility()
+        {
+            var sensibility = sensibilityControl;
+
+            foreach (var func in _multiplySensibility)
+            {
+                sensibility *= func();
+            }
+
+            return sensibility;
         }
     }
 }

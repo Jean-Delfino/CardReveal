@@ -40,6 +40,11 @@ public class CardManager : Singleton<CardManager>
     
     public static bool CanFlip => (Instance._canFlip);
 
+    private void Start()
+    {
+        dragCamera.AddSensibilityModifier(GetCameraSensibility);
+    }
+
     public void SetLevel(Map map, LevelDefinition definition)
     {
         _actualMap = map;
@@ -180,5 +185,10 @@ public class CardManager : Singleton<CardManager>
     public (LevelDefinition level, Map map) GetNextLevel()
     {
         return UtilWorlds.FindNextLevel(_actualWorld, _actualMap, _levelDefinition);
+    }
+
+    private float GetCameraSensibility()
+    {
+        return UtilCardSave.LoadSensibility();
     }
 }
