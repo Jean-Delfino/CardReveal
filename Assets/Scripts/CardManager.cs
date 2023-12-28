@@ -37,8 +37,9 @@ public class CardManager : Singleton<CardManager>
     
     [SerializeField] private Card cardPrefab;
     private bool _canFlip = false;
-    
-    public static bool CanFlip => (Instance._canFlip);
+
+    [SerializeField] private GameObject blockingMenu;
+    public static bool CanFlip => (!Instance.blockingMenu.activeInHierarchy && Instance._canFlip);
 
     private void Start()
     {
@@ -189,6 +190,6 @@ public class CardManager : Singleton<CardManager>
 
     private float GetCameraSensibility()
     {
-        return UtilCardSave.LoadSensibility();
+        return Instance.blockingMenu.activeInHierarchy ? 0 : UtilCardSave.LoadSensibility();
     }
 }
