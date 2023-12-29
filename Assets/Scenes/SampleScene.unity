@@ -4182,6 +4182,7 @@ GameObject:
   - component: {fileID: 1876845496}
   - component: {fileID: 1876845497}
   - component: {fileID: 1876845498}
+  - component: {fileID: 1876845499}
   m_Layer: 5
   m_Name: TransitionManager
   m_TagString: Untagged
@@ -4243,6 +4244,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876845495}
   m_CullTransparentMesh: 1
+--- !u!114 &1876845499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876845495}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f862917edcbb1a4281e02591d50a251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1882226128
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,7 +4642,7 @@ MonoBehaviour:
   column: 0
   onClick: {fileID: 0}
   animator: {fileID: 1876845497}
-  triggerParameter: 
+  triggerParameter: Quit
 --- !u!1001 &861435245257645447
 PrefabInstance:
   m_ObjectHideFlags: 0
