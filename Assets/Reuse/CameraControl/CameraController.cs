@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using MyBox;
 using UnityEngine;
+using Reuse.Patterns;
 
 namespace Reuse.CameraControl
 {
@@ -11,7 +11,7 @@ namespace Reuse.CameraControl
         Side,
         AlternativeSide,
     }
-    public class CameraController : MonoBehaviour
+    public class CameraController : Singleton<CameraController>
     {
         [SerializeField] private List<GameObject> vCams;
 
@@ -26,16 +26,10 @@ namespace Reuse.CameraControl
         public static Vector3 ActualCameraPosition => _instance._actualCamera.transform.position;
         
         public static bool IsMainCameraReady = false;
-        private void Awake()
+        private new void Awake()
         {
-            if (_instance != null)
-            {
-                Destroy(this);
-                return;
-            }
+            base.Awake();
 
-            _instance = this;
-            
             _camera = Camera.main;
             IsMainCameraReady = true;
             if(vCams.Count > 0) SwitchCamera(CameraType.Default);
@@ -43,10 +37,13 @@ namespace Reuse.CameraControl
         
         public static void SwitchCamera(CameraType cameraType)
         {
-            _instance.vCams.Where((_, idx) => idx != (int) cameraType).ForEach(cam =>
-            {
-                cam.SetActive(false);
-            });
+            _instance.vCams
+                .Where((_, idx) => idx != (int)cameraType)
+                .ToList()
+                .ForEach(cam =>
+                {
+                    cam.SetActive(false);
+                });
 
             _instance._actualCamera = _instance.vCams[(int)cameraType];
             _instance._actualCamera.SetActive(true);
