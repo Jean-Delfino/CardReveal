@@ -45,12 +45,12 @@ public class CardFacesRevealController
         
         _card1.UnFlipCard();
         _card2.UnFlipCard();
-
-        _card2 = null;
         
-        return (false, false, score);
-    }
+        _card1 = _card2 = null;
 
+        return (true, false, score);
+    }
+    
     public bool SetFlippedCard(Card card)
     {
         if (_card1 == null)
@@ -68,18 +68,7 @@ public class CardFacesRevealController
 
     public bool HasAllCardsFlipped()
     {
-        return _card1 != null && _card2 != null && _card1.HasTotallyFlipped && _card2.HasTotallyFlipped;
-    }
-    
-    public bool SetCardNormalState()
-    {
-        if (_card1 != null)
-        {
-            _card1 = null;
-            return false;
-        }
-
-        return true;
+        return _card1 != null && _card2 != null && _card1.IsTotallyFlipped && _card2.IsTotallyFlipped;
     }
 
     public void SetCardAmount(int cardAmount)

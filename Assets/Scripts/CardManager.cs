@@ -111,7 +111,7 @@ public class CardManager : Singleton<CardManager>
         //The card back image is the same always, but it could change
         _spawnController.AddCardVisual(card, _levelDefinition);
     }
-
+    
     public void FlipCard(Card card)
     {
         _canFlip  = _revealController.SetFlippedCard(card);
@@ -140,12 +140,7 @@ public class CardManager : Singleton<CardManager>
             DisableGameFlipAndCamera();
             scoreController.EndGame(endGameUIController.GetGameUI(false));
         }
-    } 
-    public void RevertCard(Card card)
-    {
-        _canFlip = _revealController.SetCardNormalState();
     }
-
     public void SetCardsAmount(int cardAmount)
     {
         _revealController.SetCardAmount(cardAmount);

@@ -1,7 +1,13 @@
-﻿using System;
-using Reuse.Sound;
+﻿using Reuse.Sound;
 using UnityEngine;
 
+public enum CardState
+{
+    None,
+    UnFlipped,
+    Flipped,
+    TotallyFlipped,
+}
 public class Card : MonoBehaviour
 {
     private const string CardFlipSoundVFX = "card_flip";
@@ -13,9 +19,9 @@ public class Card : MonoBehaviour
     private int _frontCardIndex;
     private bool _mouseDown = false;
 
-    private bool _totallyFlipped = false;
+    private CardState _cardState = CardState.UnFlipped;
 
-    public bool HasTotallyFlipped => _totallyFlipped;
+    public bool IsTotallyFlipped => _cardState == CardState.TotallyFlipped;
     public void OnMouseDown()
     {
         _mouseDown = true;
@@ -23,7 +29,7 @@ public class Card : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if (_mouseDown && CardManager.CanFlip) FlipCard();
+        if (_cardState == CardState.UnFlipped && _mouseDown && CardManager.CanFlip) FlipCard();
 
         _mouseDown = false;
     }
@@ -52,6 +58,7 @@ public class Card : MonoBehaviour
 
     private void FlipCard()
     {
+        _cardState = CardState.Flipped;
         SoundManager.Instance.PlayAudio(CardFlipSoundVFX);
         CardManager.Instance.FlipCard(this);
         cardAnimation.Flip(true);
@@ -60,19 +67,19 @@ public class Card : MonoBehaviour
     public void UnFlipCard()
     {
         SoundManager.Instance.PlayAudio(CardFlipSoundVFX);
-        _totallyFlipped = false;
+        _cardState = CardState.Flipped;
         cardAnimation.Flip(false);
     }
 
     public void SendFlippedCardToCardManager()
     {
-        _totallyFlipped = true;
+        _cardState = CardState.TotallyFlipped;
         CardManager.Instance.CheckFlippedCards();
     }
 
     public void SendUnFlippedCardToCardManager()
     {
-        CardManager.Instance.RevertCard(this);
+        _cardState = CardState.UnFlipped;
     }
 
     public int GetFaceIndex()
