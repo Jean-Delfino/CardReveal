@@ -15,15 +15,12 @@ namespace Reuse.CameraControl
     {
         [SerializeField] private List<GameObject> vCams;
 
-        private static CameraController _instance;
-
         private Camera _camera;
         private GameObject _actualCamera;
 
-
-        public static GameObject ActualCamera => _instance._actualCamera;
-        public static Quaternion ActualCameraRotation => _instance._actualCamera.transform.rotation;
-        public static Vector3 ActualCameraPosition => _instance._actualCamera.transform.position;
+        public static GameObject ActualCamera => Instance._actualCamera;
+        public static Quaternion ActualCameraRotation => Instance._actualCamera.transform.rotation;
+        public static Vector3 ActualCameraPosition => Instance._actualCamera.transform.position;
         
         public static bool IsMainCameraReady = false;
         private new void Awake()
@@ -37,7 +34,7 @@ namespace Reuse.CameraControl
         
         public static void SwitchCamera(CameraType cameraType)
         {
-            _instance.vCams
+            Instance.vCams
                 .Where((_, idx) => idx != (int)cameraType)
                 .ToList()
                 .ForEach(cam =>
@@ -45,14 +42,14 @@ namespace Reuse.CameraControl
                     cam.SetActive(false);
                 });
 
-            _instance._actualCamera = _instance.vCams[(int)cameraType];
-            _instance._actualCamera.SetActive(true);
+            Instance._actualCamera = Instance.vCams[(int)cameraType];
+            Instance._actualCamera.SetActive(true);
         }
         
         public static void InstantaneousSwitchCamera(CameraType cameraType)
         {
             SwitchCamera(cameraType);
-            var cameraTransform = _instance._camera.transform;
+            var cameraTransform = Instance._camera.transform;
             
             cameraTransform.rotation = ActualCameraRotation;
             cameraTransform.position = ActualCameraPosition;
@@ -60,12 +57,12 @@ namespace Reuse.CameraControl
 
         public static void ResetCamera()
         {
-            _instance.vCams[(int) CameraType.Default].SetActive(true);
+            Instance.vCams[(int) CameraType.Default].SetActive(true);
         }
 
         public static Camera GetMainCamera()
         {
-            return _instance._camera;
+            return Instance._camera;
         }
     }
 }
