@@ -17,7 +17,7 @@ namespace Reuse.CSV
             if(_text == null) _text = GetComponent<TextMeshProUGUI>();
         }
 
-        private void OnDisbale()
+        private void OnDisable()
         {
             GameVersatileTextsController.Unsubscribe(this);
         }
