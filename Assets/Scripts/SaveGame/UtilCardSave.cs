@@ -32,6 +32,7 @@ namespace SaveGame
         }
         public static int LoadLanguage()
         {
+            return PlayerPrefs.GetInt(LanguageCardSave, -1); //No saved language
         }
         public static float LoadSensibility(float defaultValue = 0.5f)
         {
