@@ -264,8 +264,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4d9ef6b1b5a78ab4f8a6ac6532b71e0d, type: 2}
-  m_sharedMaterial: {fileID: 8951362951054390402, guid: 4d9ef6b1b5a78ab4f8a6ac6532b71e0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a2d37296ef3aa3343a791c1b88531cb4, type: 2}
+  m_sharedMaterial: {fileID: 8951362951054390402, guid: a2d37296ef3aa3343a791c1b88531cb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1600,8 +1600,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SAVE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4d9ef6b1b5a78ab4f8a6ac6532b71e0d, type: 2}
-  m_sharedMaterial: {fileID: 8951362951054390402, guid: 4d9ef6b1b5a78ab4f8a6ac6532b71e0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a2d37296ef3aa3343a791c1b88531cb4, type: 2}
+  m_sharedMaterial: {fileID: 8951362951054390402, guid: a2d37296ef3aa3343a791c1b88531cb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2407,7 +2407,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1137317823436867274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Reuse.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ui_button
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3858482704392083026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,6 +2600,7 @@ GameObject:
   - component: {fileID: 1137317823475588529}
   - component: {fileID: 1137317823475588532}
   - component: {fileID: 1137317823475588533}
+  - component: {fileID: 1900017367}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2654,6 +2667,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1900017367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137317823475588528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &1137317823573527960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,7 +2802,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1137317823573527967}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Reuse.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ui_button
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1137317823578001562
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,8 +5179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: QUIT GAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4d9ef6b1b5a78ab4f8a6ac6532b71e0d, type: 2}
-  m_sharedMaterial: {fileID: 8951362951054390402, guid: 4d9ef6b1b5a78ab4f8a6ac6532b71e0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a2d37296ef3aa3343a791c1b88531cb4, type: 2}
+  m_sharedMaterial: {fileID: 8951362951054390402, guid: a2d37296ef3aa3343a791c1b88531cb4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5355,6 +5394,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Quit
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Reuse.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ui_button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8861974496067409143

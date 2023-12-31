@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Lostina Regular OptionsSDF
   m_EditorClassIdentifier: 
-  hashCode: 1089043977
+  hashCode: 132691769
   material: {fileID: 8951362951054390402}
-  materialHashCode: 1075089161
+  materialHashCode: -2132031623
   m_Version: 1.1.0
   m_SourceFontFileGUID: 9badbf1af6d3de3489d907405929e320
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 9badbf1af6d3de3489d907405929e320, type: 3}
@@ -2717,7 +2717,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.25
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
