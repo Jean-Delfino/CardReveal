@@ -1,4 +1,6 @@
 using System;
+using Reuse.CSV;
+using Reuse.UI;
 using SaveGame;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -33,6 +35,7 @@ namespace UI
         [SerializeField] private Slider musicSlider;
         [SerializeField] private Slider sfxSlider;
         [SerializeField] private Slider cameraMovementSensibility;
+        [SerializeField] private LanguageDropdown languageDropdown;
         
         [Space][Header("SETTING LIMITS COMPONENTS")] [Space]
         [SerializeField] private SettingLimits musicLimits;
@@ -85,7 +88,8 @@ namespace UI
             
             //Easier to save the value
             UtilCardSave.SaveSensibility(cameraMovementLimits.GetLimit(cameraMovementSensibility.value));
-
+            UtilCardSave.SaveLanguage(languageDropdown.GetDropdownValue());
+            
             visual.SetActive(false);
         }
         
@@ -94,7 +98,7 @@ namespace UI
         {
             mainMixer.SetFloat("BGM", musicLimits.GetLimit(UtilCardSave.LoadMusic(musicLimits.defaultValue)));
             mainMixer.SetFloat("SFX", sfxLimits.GetLimit(UtilCardSave.LoadSfx(sfxLimits.defaultValue)));
-            
+            GameVersatileTextsController.ChangeActualLanguage(UtilCardSave.LoadLanguage());
             visual.SetActive(false);
         }
 
