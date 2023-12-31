@@ -58,7 +58,7 @@ namespace Reuse.CSV
             var line = LocalizeLine(key);
             for(var i = 0; i < line.Length; i++)
             {
-                if(unknownLanguageWord == line[i]) return i;
+                if(string.Equals(unknownLanguageWord ,line[i])) return i;
             }
 
             return -1;
