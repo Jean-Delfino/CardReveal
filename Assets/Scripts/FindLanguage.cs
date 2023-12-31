@@ -22,6 +22,7 @@ public class FindLanguage : MonoBehaviour
         if(language == -1) yield break;
         
         GameVersatileTextsController.ChangeActualLanguage(language);
+        UtilCardSave.SaveLanguage(language);
         yield return null;
     }
 }
