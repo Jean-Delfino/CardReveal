@@ -4,10 +4,11 @@ namespace SaveGame
 {
     public static class UtilCardSave
     {
-        private static string sfxCardSave = "sfx_card_save_key";
-        private static string musicCardSave = "music_card_save_key";
-        private static string languageCardSave = "language_card_save_key";
-        private static string sensibilityCardSave = "sensibility_card_save_key";
+        private const string SfxCardSave = "sfx_card_save_key";
+        private const string MusicCardSave = "music_card_save_key";
+        private const string LanguageCardSave = "language_card_save_key";
+        private const string SensibilityCardSave = "sensibility_card_save_key";
+        
         public static int GetStarAmount(string key, int defaultValue = 0)
         {
             return PlayerPrefs.GetInt(key, defaultValue);
@@ -23,39 +24,38 @@ namespace SaveGame
         
         public static float LoadSfx(float defaultValue = 0.5f)
         {
-            return PlayerPrefs.GetFloat(sfxCardSave, defaultValue);
+            return PlayerPrefs.GetFloat(SfxCardSave, defaultValue);
         }
         public static float LoadMusic(float defaultValue = 0.5f)
         {
-            return PlayerPrefs.GetFloat(musicCardSave, defaultValue);
+            return PlayerPrefs.GetFloat(MusicCardSave, defaultValue);
         }
         public static int LoadLanguage()
         {
-            return PlayerPrefs.GetInt(languageCardSave, 0);
         }
         public static float LoadSensibility(float defaultValue = 0.5f)
         {
-            return PlayerPrefs.GetFloat(sensibilityCardSave, defaultValue);
+            return PlayerPrefs.GetFloat(SensibilityCardSave, defaultValue);
         }
         
         public static void SaveSfx(float value)
         {
-            PlayerPrefs.SetFloat(sfxCardSave, value);
+            PlayerPrefs.SetFloat(SfxCardSave, value);
             PlayerPrefs.Save();
         }
         public static void SaveMusic(float value)
         {
-            PlayerPrefs.SetFloat(musicCardSave, value);
+            PlayerPrefs.SetFloat(MusicCardSave, value);
             PlayerPrefs.Save();
         }
         public static void SaveLanguage(int value)
         {
-            PlayerPrefs.SetInt(languageCardSave, value);
+            PlayerPrefs.SetInt(LanguageCardSave, value);
             PlayerPrefs.Save();
         }
         public static void SaveSensibility(float value)
         {
-            PlayerPrefs.SetFloat(sensibilityCardSave, value);
+            PlayerPrefs.SetFloat(SensibilityCardSave, value);
             PlayerPrefs.Save();
         }
     }
