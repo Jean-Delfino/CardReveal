@@ -4753,10 +4753,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreUI
       objectReference: {fileID: 0}
-    - target: {fileID: 8928514053318762749, guid: 4717ca3ab1f8dea41a533cff4f29e2ac, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4717ca3ab1f8dea41a533cff4f29e2ac, type: 3}
 --- !u!114 &861435245257645448 stripped
