@@ -28,7 +28,7 @@ namespace Reuse.CSV
 
         public static void ChangeActualLanguage(int newLanguage)
         {
-            if(_files.actualLanguage == newLanguage) return;
+            if(GameVersatileTextsLocator.GetLanguage() == newLanguage) return;
             
             _files.actualLanguage = newLanguage; //This saves the file in memory
             GameVersatileTextsLocator.ChangeActualLanguage(_files.actualLanguage);
@@ -37,7 +37,7 @@ namespace Reuse.CSV
 
         public static void ChangeAlternativeLanguage(int newLanguage)
         {
-            if(_files.actualAlternativeLanguage == newLanguage) return;
+            if(GameVersatileTextsLocator.GetLanguage(true) == newLanguage) return;
 
             _files.actualAlternativeLanguage = newLanguage; //This saves the file in memory
             GameVersatileTextsLocator.ChangeAlternativeLanguage(_files.actualLanguage);
