@@ -1641,6 +1641,7 @@ GameObject:
   - component: {fileID: 447694188}
   - component: {fileID: 447694190}
   - component: {fileID: 447694191}
+  - component: {fileID: 447694192}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1720,6 +1721,19 @@ MonoBehaviour:
     source: {fileID: 1882226129}
   - key: click_wood
     source: {fileID: 266537778}
+--- !u!114 &447694192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447694187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85a9a64306e40329b3b07cd62978721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageKey: id_language_code
 --- !u!1 &467416043
 GameObject:
   m_ObjectHideFlags: 0
