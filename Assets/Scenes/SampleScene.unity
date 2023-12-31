@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textKey: id_quit
-  _text: {fileID: 36659404}
+  text: {fileID: 0}
   isAlternative: 0
   forceCap: 1
 --- !u!114 &36659404
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textKey: id_game_name
-  _text: {fileID: 91198029}
+  text: {fileID: 0}
   isAlternative: 0
   forceCap: 1
 --- !u!1001 &105578675
@@ -3631,7 +3631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textKey: id_play
-  _text: {fileID: 1736878581}
+  text: {fileID: 0}
   isAlternative: 0
   forceCap: 1
 --- !u!1 &1740479195
@@ -3739,7 +3739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textKey: id_options
-  _text: {fileID: 1769627823}
+  text: {fileID: 0}
   isAlternative: 0
   forceCap: 1
 --- !u!114 &1769627823
@@ -4805,6 +4805,10 @@ PrefabInstance:
     - target: {fileID: 101679432349228207, guid: a62e850229fcafb4eaf980428cfa6ee9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 301380895965337945, guid: a62e850229fcafb4eaf980428cfa6ee9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.700012
       objectReference: {fileID: 0}
     - target: {fileID: 341111955261452553, guid: a62e850229fcafb4eaf980428cfa6ee9, type: 3}
       propertyPath: m_AnchorMax.y
