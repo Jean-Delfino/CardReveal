@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro;
@@ -20,7 +19,7 @@ namespace Reuse.UI
 
             tmpDropdown.ClearOptions();
 
-            var dropdownOptions = new System.Collections.Generic.List<TMP_Dropdown.OptionData>();
+            var dropdownOptions = new List<TMP_Dropdown.OptionData>();
 
             foreach (var option in languages)
             {
@@ -29,8 +28,12 @@ namespace Reuse.UI
 
             tmpDropdown.AddOptions(dropdownOptions);
 
-            tmpDropdown.value = GameVersatileTextsLocator.GetLanguage(isAlternative);
             tmpDropdown.onValueChanged.AddListener(ChangeLanguage);
+        }
+
+        private void OnEnable()
+        {
+            tmpDropdown.value = GameVersatileTextsLocator.GetLanguage(isAlternative);
         }
 
         private void ChangeLanguage(int newLanguage)
