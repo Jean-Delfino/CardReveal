@@ -27,3 +27,8 @@ id_resume,Voltar,Resume
 id_quit,Sair,Quit
 id_storyteller,Narrador,Storyteller
 id_tutorial,Tutorial,Tutorial
+id_save,Salvar,Save
+id_close,Fechar,Close
+id_quit_game,Sair do Jogo,Quit Game
+id_audio_volume,Volume do Aúdio,Audio Volume
+id_camera_sensibility,Sensibilidade da câmera, Camera Sensibility
