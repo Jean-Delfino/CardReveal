@@ -26,7 +26,7 @@ namespace Reuse.Storytelling
 
         public override void SetText()
         {
-            _text.text = GetText(textKey);
+            text.text = GetText(textKey);
         }
 
         public string GetText(string key){

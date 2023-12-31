@@ -7,14 +7,14 @@ namespace Reuse.CSV
     public class VersatileText : MonoBehaviour
     {
         [SerializeField] protected string textKey;
-        [SerializeField] protected TextMeshProUGUI _text;
+        [SerializeField] protected TextMeshProUGUI text;
         [SerializeField] protected bool isAlternative = false;
 
         [SerializeField] private bool forceCap = false;
         
         public void Awake()
         {
-            if(_text == null) _text = GetComponent<TextMeshProUGUI>();
+            if(text == null) text = GetComponent<TextMeshProUGUI>();
         }
 
         private void OnDisable()
@@ -38,11 +38,11 @@ namespace Reuse.CSV
             var newText = GameVersatileTextsLocator.Localize(key, isAlternative);
             if(newText == null) return;
             
-            _text.text = forceCap ? newText.ToUpper() : newText;
+            text.text = forceCap ? newText.ToUpper() : newText;
         }
 
         public void DirectlySetText(string phrase){
-            _text.text = phrase;
+            text.text = phrase;
         }
 
         protected void IncreaseText(string key)
@@ -50,11 +50,16 @@ namespace Reuse.CSV
             var newText = GameVersatileTextsLocator.Localize(key, isAlternative);
             if(newText == null) return;
             
-            _text.text += newText;
+            text.text += newText;
         }
 
         public virtual void SetKey(string key){
             textKey = key;
+        }
+
+        public TextMeshProUGUI GetTextMeshProUGUI()
+        {
+            return text;
         }
     }
 }
