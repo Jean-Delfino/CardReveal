@@ -18,7 +18,7 @@ public class FindLanguage : MonoBehaviour
     private IEnumerator WaitAndSetLanguage()
     {
         yield return new WaitUntil(GameVersatileTextsLocator.HasBeenInitialized);
-        var language = UtilGameVersatileText.FindComputerLanguage(languageKey);
+        var language = UtilGameVersatileText.FindComputerLanguageConsiderOnlyLanguageToo(languageKey);
         if(language == -1) yield break;
         
         GameVersatileTextsController.ChangeActualLanguage(language);
