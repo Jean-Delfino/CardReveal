@@ -32,3 +32,8 @@ id_close,Fechar,Close
 id_quit_game,Sair do Jogo,Quit Game
 id_audio_volume,Volume do Aúdio,Audio Volume
 id_camera_sensibility,Sensibilidade da câmera, Camera Sensibility
+id_lucky,Sortudo,Lucky
+id_memory_reveal,Mestre da Memória,Memory Mastery
+id_memory_miss,Erro de Memória,Memory Miss
+id_miss,Erro,Miss
+id_change_language,Mudar Linguagem,Change Language

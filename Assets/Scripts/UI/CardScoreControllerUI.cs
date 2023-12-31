@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Reuse.CSV;
 using Reuse.Utils;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI scoreText;
         
         [SerializeField] private Animator scoreTypeAnimator;
-        [SerializeField] private TextMeshProUGUI scoreTypeText;
+        [SerializeField] private VersatileText scoreTypeText;
         
         [Serializable]
         public class ScoreTypeWithText
@@ -35,8 +36,8 @@ namespace UI
         public void ShowScoreType(ScoreType scoreType)
         {
             var score = scoreTextsDefinition.First(e => e.type == scoreType);
-            scoreTypeText.text = score.text;
-            UtilTextMeshPro.SetGradient(scoreTypeText, score.gradient);
+            scoreTypeText.SetKey(score.text);
+            UtilTextMeshPro.SetGradient(scoreTypeText.GetTextMeshProUGUI(), score.gradient);
             
             scoreTypeAnimator.SetTrigger("Score");
         }

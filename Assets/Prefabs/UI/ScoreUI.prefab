@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8177221861892569217}
   - component: {fileID: 2751709779386323745}
   - component: {fileID: 4469064544955467767}
+  - component: {fileID: 3339095092724562018}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -135,6 +136,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3339095092724562018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227517977857179415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca051d4b5df4e43915ad803e4599c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textKey: 
+  text: {fileID: 4469064544955467767}
+  isAlternative: 0
+  forceCap: 1
 --- !u!1 &547129010494725890
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2805518650594487261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -468,10 +485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 861435244798423037}
   scoreTypeAnimator: {fileID: 8347169908929358585}
-  scoreTypeText: {fileID: 4469064544955467767}
+  scoreTypeText: {fileID: 3339095092724562018}
   scoreTextsDefinition:
   - type: 1
-    text: LUCKY
+    text: id_lucky
     gradient:
       defaultColor: {r: 1, g: 1, b: 1, a: 1}
       colorMode: 3
@@ -480,7 +497,7 @@ MonoBehaviour:
       bottomLeft: {r: 0.9137255, g: 0.7176471, b: 0.16078432, a: 1}
       bottomRight: {r: 0.93333334, g: 0.9019608, b: 0.47843137, a: 1}
   - type: 2
-    text: MEMORY REVEAL
+    text: id_memory_reveal
     gradient:
       defaultColor: {r: 1, g: 1, b: 1, a: 1}
       colorMode: 3
@@ -489,7 +506,7 @@ MonoBehaviour:
       bottomLeft: {r: 0.16078432, g: 0.45490196, b: 0.9137255, a: 1}
       bottomRight: {r: 0.47843137, g: 0.93333334, b: 0.9098039, a: 1}
   - type: 3
-    text: MEMORY MISS
+    text: id_memory_miss
     gradient:
       defaultColor: {r: 1, g: 1, b: 1, a: 1}
       colorMode: 3
@@ -498,7 +515,7 @@ MonoBehaviour:
       bottomLeft: {r: 1, g: 0.078431375, b: 0, a: 1}
       bottomRight: {r: 0.93333334, g: 0.47843137, b: 0.62352943, a: 1}
   - type: 4
-    text: MISS
+    text: id_miss
     gradient:
       defaultColor: {r: 1, g: 1, b: 1, a: 1}
       colorMode: 3
