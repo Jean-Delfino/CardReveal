@@ -1,6 +1,6 @@
 namespace Reuse.Pattern
 {
-    public interface Publisher
+    public interface IPublisher
     {
         void Subscribe();
     }

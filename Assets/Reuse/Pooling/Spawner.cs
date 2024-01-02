@@ -98,7 +98,7 @@ namespace Reuse.Pooling
             return go;
         }
 
-        public static void Despawn(GameObject gameObject)
+        public static void DeSpawn(GameObject gameObject)
         {
             var pooled = GetPool(gameObject);
             
@@ -108,15 +108,15 @@ namespace Reuse.Pooling
             pooled.Enqueue(gameObject);
         }
         
-        public static void Despawn(GameObject gameObject, float duration)
+        public static void DeSpawn(GameObject gameObject, float duration)
         { 
-            _instance.StartCoroutine(WaitAndDespawn(gameObject, duration));
+            _instance.StartCoroutine(WaitAndDeSpawn(gameObject, duration));
         }
 
-        private static IEnumerator WaitAndDespawn(GameObject gameObject, float duration)
+        private static IEnumerator WaitAndDeSpawn(GameObject gameObject, float duration)
         {
             yield return new WaitForSeconds(duration);
-            Despawn(gameObject);
+            DeSpawn(gameObject);
         }
 
         private static Queue<GameObject> GetPool(GameObject gameObject)
