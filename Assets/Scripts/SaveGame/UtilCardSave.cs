@@ -16,7 +16,7 @@ namespace SaveGame
 
         public static void SetStartAmount(string key, int value)
         {
-            if (GetStarAmount(key) > value) return;
+            if (GetStarAmount(key) >= value) return;
             
             PlayerPrefs.SetInt(key, value);
             PlayerPrefs.Save();
