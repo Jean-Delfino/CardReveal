@@ -19,15 +19,21 @@ public class CardManager : Singleton<CardManager>
         { GameState.PlayNextLevel ,PlayNextLevel},
         { GameState.RestartLevel , PlayAgain}
     };
-
+    [Space] [Header("CARD EFFECT GAME CONTROLLER")] [Space]
     [SerializeField] private CardEndGameUIController endGameUIController;
     [SerializeField] private CardScoreController scoreController;
     [SerializeField] private CardAnimationController cardAnimationController;
+
+    [Space] [Header("CARD GAME VIEW")] [Space]
     [SerializeField] private GameObject gameUI;
-    
     [SerializeField] private DragMoveCamera dragCamera;
     [SerializeField] private Transform cardSpawnPoint;
+    [SerializeField] private Card cardPrefab;
 
+    [Space] [Header("SPECIAL GAME VIEWS")] [Space]
+    [SerializeField] private GameObject blockingMenu;
+
+    [Space] [Header("INTERNAL CONTROLLERS")] [Space]
     private World _actualWorld;
     private Map _actualMap;
     private LevelDefinition _levelDefinition = null;
@@ -36,10 +42,8 @@ public class CardManager : Singleton<CardManager>
     private readonly CardFacesSpawnController _spawnController = new();
     private readonly CardFacesRevealController _revealController = new();
     
-    [SerializeField] private Card cardPrefab;
     private bool _canFlip = false;
 
-    [SerializeField] private GameObject blockingMenu;
     public static bool CanFlip => (!Instance.blockingMenu.activeInHierarchy && Instance._canFlip);
 
     private void Start()
