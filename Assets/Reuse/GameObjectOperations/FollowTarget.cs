@@ -12,8 +12,7 @@ namespace Reuse.GameObjectOperations
         [SerializeField] private  float rotationSpeed = 5.0f;
         [SerializeField] private float followDistance = 3.0f;
 
-        // Update is called once per frame
-        public Action touchedTarget;
+        public Action TouchedTarget;
         void Update()
         {
             if(target == null) return;
@@ -28,7 +27,7 @@ namespace Reuse.GameObjectOperations
                 return;
             }
             
-            touchedTarget?.Invoke();
+            TouchedTarget?.Invoke();
         }
     }
 }

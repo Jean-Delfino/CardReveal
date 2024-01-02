@@ -21,8 +21,7 @@ namespace Reuse.GameObjectOperations
             _direction = new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f)).normalized;
             _initialPosition = transform.position;
         }
-
-        // Update is called once per frame
+        
         private void Update()
         {
             _actualTimeElapsed += Time.deltaTime;
