@@ -9,9 +9,11 @@ namespace Reuse.Utils
     public static class UtilWeb
     {
         /// <summary>
-        /// Bom para baixar um arquivo CSV que será usado pelo usuário.
+        /// Good to download a file to the User
         /// </summary>
         /// <param name="savePath">Use com essa formatação :  @"\A\B\C\.</param>
+        
+        #if UNITY_EDITOR
         public static void SaveDownloadURL(string downloadURL, string savePath, string fileName)
         {
             var localFile = Application.persistentDataPath + "/" + savePath + "/" + fileName;
@@ -42,5 +44,6 @@ namespace Reuse.Utils
 
             AssetDatabase.Refresh();
         }
+        #endif
     }
 }
