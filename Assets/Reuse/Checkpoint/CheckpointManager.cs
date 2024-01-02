@@ -1,31 +1,20 @@
+using Reuse.Patterns;
 using UnityEngine;
 
 namespace Reuse.Checkpoint
 {
-    public class CheckpointManager : MonoBehaviour
+    public class CheckpointManager : Singleton<CheckpointManager>
     {
-        private static CheckpointManager _instance;
-
         private Transform _lastCheckpoint;
-        private void Awake()
-        {
-            if(_instance != null)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
-
-            _instance = this;
-        }
 
         public static void SetLastCheckpoint(Transform checkpoint)
         {
-            _instance._lastCheckpoint = checkpoint;
+            Instance._lastCheckpoint = checkpoint;
         }
 
         public static Vector3 GetLastCheckpoint()
         {
-            return _instance._lastCheckpoint.position;
+            return Instance._lastCheckpoint.position;
         }
     }
 }
