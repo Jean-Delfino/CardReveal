@@ -25,7 +25,7 @@ public class CardManager : Singleton<CardManager>
     [SerializeField] private CardAnimationController cardAnimationController;
 
     [Space] [Header("CARD GAME VIEW")] [Space]
-    [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject blockerUI;
     [SerializeField] private DragMoveCamera dragCamera;
     [SerializeField] private Transform cardSpawnPoint;
     [SerializeField] private Card cardPrefab;
@@ -70,7 +70,7 @@ public class CardManager : Singleton<CardManager>
         scoreController.ResetScore();
         DisableGameFlipAndCamera();
         ResetCameraPos();
-        gameUI.SetActive(false);
+        blockerUI.SetActive(true);
     }
 
     private void ResetCameraPos()
@@ -94,7 +94,7 @@ public class CardManager : Singleton<CardManager>
     {
         _canFlip = true;
         dragCamera.enabled = true;
-        gameUI.SetActive(true);
+        blockerUI.SetActive(false);
     }
 
     public void CardAnimationStart()
@@ -166,7 +166,7 @@ public class CardManager : Singleton<CardManager>
 
     private static void DestroyCardGame()
     {
-        Instance.gameUI.SetActive(false);
+        Instance.blockerUI.SetActive(true);
         Instance._spawnController.DestroyCardGame();
     }
 

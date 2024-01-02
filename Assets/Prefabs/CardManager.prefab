@@ -70,9 +70,11 @@ MonoBehaviour:
   endGameUIController: {fileID: 1710241189}
   scoreController: {fileID: 2749732095928019951}
   cardAnimationController: {fileID: 2749732095928019921}
+  blockerUI: {fileID: 0}
   dragCamera: {fileID: 0}
   cardSpawnPoint: {fileID: 0}
   cardPrefab: {fileID: 8990823471414210851, guid: f884f5ef0b0cbb74bb75ac151c1d13ee, type: 3}
+  blockingMenu: {fileID: 0}
 --- !u!114 &2749732095928019951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ MonoBehaviour:
     toTrigger: {fileID: 0}
   - state: 2
     triggerName: MapSelection
-    callManagerTime: 1.1
+    callManagerTime: 0
     animationSpeed: 1
     needToCallManager: 1
     toTrigger: {fileID: 0}
