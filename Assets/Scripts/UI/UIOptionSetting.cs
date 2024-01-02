@@ -13,19 +13,17 @@ namespace UI
         [Serializable]
         private class SettingLimits
         {
-            public float minValue;
-            public float maxValue;
+            public AnimationCurve animationValues;
+            public AnimationCurve animationValuesReverseAxis;
             public float defaultValue = 0.8f;
             public float GetLimit(float value)
             {
-                return Mathf.Lerp(minValue, maxValue, value);
+                return animationValues.Evaluate(value);
             }
             
             public float GetPercentage(float value)
             {
-                var clampedValue = Mathf.Clamp(value, minValue, maxValue);
-
-                return ((clampedValue - minValue) / (maxValue - minValue));
+                return animationValuesReverseAxis.Evaluate(value);
             }
         }
         
