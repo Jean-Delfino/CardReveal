@@ -1,6 +1,7 @@
 using System;
 using Reuse.CSV;
 using Reuse.UI;
+using Reuse.Utils;
 using SaveGame;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -77,6 +78,7 @@ namespace UI
                 cameraMovementLimits.GetPercentage(UtilCardSave.LoadSensibility(cameraMovementLimits.defaultValue)));
             
             visual.SetActive(true);
+            UtilPause.PauseGame();
         }
 
         private void SaveValues()
@@ -87,8 +89,8 @@ namespace UI
             //Easier to save the value
             UtilCardSave.SaveSensibility(cameraMovementLimits.GetLimit(cameraMovementSensibility.value));
             UtilCardSave.SaveLanguage(languageDropdown.GetDropdownValue());
-            
-            visual.SetActive(false);
+
+            Disable();
         }
         
         //Also the easiest way, but not the best
@@ -97,7 +99,14 @@ namespace UI
             mainMixer.SetFloat("BGM", musicLimits.GetLimit(UtilCardSave.LoadMusic(musicLimits.defaultValue)));
             mainMixer.SetFloat("SFX", sfxLimits.GetLimit(UtilCardSave.LoadSfx(sfxLimits.defaultValue)));
             GameVersatileTextsController.ChangeActualLanguage(UtilCardSave.LoadLanguage());
+
+            Disable();
+        }
+
+        private void Disable()
+        {
             visual.SetActive(false);
+            UtilPause.ResumeGame();
         }
 
         private void MusicSliderValueChanged(float value)
