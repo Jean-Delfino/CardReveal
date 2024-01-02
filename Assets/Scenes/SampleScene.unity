@@ -5106,10 +5106,6 @@ PrefabInstance:
       propertyPath: transitions.Array.data[4].toTrigger
       value: 
       objectReference: {fileID: 1876845497}
-    - target: {fileID: 1710241185, guid: 4aa1ae2b494afb141b1a254e3b19acb2, type: 3}
-      propertyPath: transitions.Array.data[1].callManagerTime
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1710241189, guid: 4aa1ae2b494afb141b1a254e3b19acb2, type: 3}
       propertyPath: winGameUI
       value: 
@@ -5162,10 +5158,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2749732095928019922, guid: 4aa1ae2b494afb141b1a254e3b19acb2, type: 3}
-      propertyPath: gameUI
-      value: 
-      objectReference: {fileID: 1136239831}
     - target: {fileID: 2749732095928019922, guid: 4aa1ae2b494afb141b1a254e3b19acb2, type: 3}
       propertyPath: blockerUI
       value: 
