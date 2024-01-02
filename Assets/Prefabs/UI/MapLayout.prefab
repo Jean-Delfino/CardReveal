@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 4346112716219708862}
   - component: {fileID: 7836358559358253659}
   - component: {fileID: 8664863373003908456}
+  - component: {fileID: 5781687238568398076}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -211,6 +212,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5781687238568398076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660971941177164093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca051d4b5df4e43915ad803e4599c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textKey: 
+  text: {fileID: 8664863373003908456}
+  isAlternative: 0
+  forceCap: 1
 --- !u!1 &9046877723853091747
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc8c5fa3ea4f899586733f4ff3f066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapName: {fileID: 8664863373003908456}
+  mapName: {fileID: 5781687238568398076}
   levelSpawn: {fileID: 8146327095891904518}
 --- !u!1 &9046877724683899890
 GameObject:
@@ -1061,7 +1078,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9177370887620420768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

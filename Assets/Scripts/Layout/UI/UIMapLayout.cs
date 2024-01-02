@@ -1,11 +1,12 @@
-﻿using TMPro;
+﻿using Reuse.CSV;
+using TMPro;
 using UnityEngine;
 
 namespace Layout.UI
 {
     public class UIMapLayout : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI mapName;
+        [SerializeField] private VersatileText mapName;
         [SerializeField] private Transform levelSpawn;
         public void SetMap(Map map, UILevelLayout levelLayout)
         {
@@ -20,7 +21,8 @@ namespace Layout.UI
                 levelCount++;
             }
             
-            mapName.text = map.MapName;
+            mapName.SetKey(map.MapName);
+            mapName.SetText();
         }
     }
 }

@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 315fdb1089d2d5a4cb76b91dbfcecbc5, type: 2}
   - {fileID: 11400000, guid: de04f3c1c1ef0564f8f6ea80eb7fb98f, type: 2}
   - {fileID: 11400000, guid: 495ebf551f343694db3d186f48c19fa1, type: 2}
-  mapName: Basics
+  mapName: id_map_basic
