@@ -92,7 +92,7 @@ namespace UI
         }
         
         //Also the easiest way, but not the best
-        private void SetSaveValues()
+        public void SetSaveValues()
         {
             mainMixer.SetFloat("BGM", musicLimits.GetLimit(UtilCardSave.LoadMusic(musicLimits.defaultValue)));
             mainMixer.SetFloat("SFX", sfxLimits.GetLimit(UtilCardSave.LoadSfx(sfxLimits.defaultValue)));

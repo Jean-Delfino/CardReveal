@@ -93,3 +93,11 @@ MonoBehaviour:
       negativeKey:
         value: 101
         keyName: e
+  - id: Options
+    value:
+      positiveKey:
+        value: 27
+        keyName: Escape
+      negativeKey:
+        value: 101
+        keyName: e
