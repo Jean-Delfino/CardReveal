@@ -17,13 +17,14 @@ public class CardManager : Singleton<CardManager>
         { GameState.QuitToMainMenu, DestroyCardGame },
         { GameState.ReturnToMapSelection, DestroyCardGame },
         { GameState.PlayNextLevel ,PlayNextLevel},
-        { GameState.RestartLevel , StartCardSpawn}
+        { GameState.RestartLevel , PlayAgain}
     };
 
     [SerializeField] private CardEndGameUIController endGameUIController;
     [SerializeField] private CardScoreController scoreController;
     [SerializeField] private CardAnimationController cardAnimationController;
-
+    [SerializeField] private GameObject gameUI;
+    
     [SerializeField] private DragMoveCamera dragCamera;
     [SerializeField] private Transform cardSpawnPoint;
 
@@ -65,6 +66,7 @@ public class CardManager : Singleton<CardManager>
         scoreController.ResetScore();
         DisableGameFlipAndCamera();
         ResetCameraPos();
+        gameUI.SetActive(false);
     }
 
     private void ResetCameraPos()
@@ -88,6 +90,7 @@ public class CardManager : Singleton<CardManager>
     {
         _canFlip = true;
         dragCamera.enabled = true;
+        gameUI.SetActive(true);
     }
 
     public void CardAnimationStart()
@@ -159,7 +162,8 @@ public class CardManager : Singleton<CardManager>
 
     private static void DestroyCardGame()
     {
-        
+        Instance.gameUI.SetActive(false);
+        Instance._spawnController.DestroyCardGame();
     }
 
     private static void WrongSetup()
@@ -169,7 +173,14 @@ public class CardManager : Singleton<CardManager>
 
     private static void PlayNextLevel()
     {
+        DestroyCardGame();
         (Instance._levelDefinition, Instance._actualMap) = Instance.GetNextLevel();
+        StartCardSpawn();
+    }
+
+    private static void PlayAgain()
+    {
+        DestroyCardGame();
         StartCardSpawn();
     }
 

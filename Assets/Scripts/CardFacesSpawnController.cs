@@ -62,4 +62,12 @@ public class CardFacesSpawnController
         _frontFaces.Add(_cardFaceIndex);
         _cardFaceIndex = -1;
     }
+
+    public void DestroyCardGame()
+    {
+        foreach (var card in _toGenerateFaces)
+        {
+            Object.Destroy(card.gameObject);
+        }
+    }
 }
