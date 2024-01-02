@@ -9,7 +9,7 @@ namespace Reuse.GameObjectOperations
         [SerializeField] private float gravityScale = 1f;
 
         private Rigidbody _rb;
-        private const float GravityAcceleration = 9.81f; // Gravidade padrão em m/s^2
+        private const float GravityAcceleration = 9.81f; // M/S^2
 
         public float GravityScale{
             get => gravityScale;
@@ -23,7 +23,7 @@ namespace Reuse.GameObjectOperations
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
-            _rb.useGravity = false; // Desativa a gravidade padrão do Rigidbody
+            _rb.useGravity = false; // Disable the default gravity of the Rigidbody
         }
 
         private void FixedUpdate()
@@ -33,8 +33,8 @@ namespace Reuse.GameObjectOperations
 
         private void ApplyCustomGravity()
         {
-            Vector3 customGravityDirection = Vector3.down; // Define a direção da gravidade personalizada (para baixo)
-            Vector3 customGravity = customGravityDirection * GetGravity();
+            var customGravityDirection = Vector3.down; // Defines the default gravity (down)
+            var customGravity = customGravityDirection * GetGravity();
             _rb.AddForce(customGravity, ForceMode.Acceleration);
         }
 
