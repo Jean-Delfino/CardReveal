@@ -16,14 +16,15 @@ namespace Reuse.Utils
         {
             var languageCode = UtilLanguage.GetSystemLanguageCode();
             var languages = GameVersatileTextsLocator.LocalizeLine(textControllerKeyLanguage);
-
+            var res = -1;
             for (int i = 0; i < languages.Length; i++)
             {
-                if (string.Equals(languageCode, languages[i]) || 
-                    UtilLanguage.CompareLanguagesFirstCode( languageCode, languages[i])) return i;
+                if (string.Equals(languageCode, languages[i])) return i;
+                
+                if(UtilLanguage.CompareLanguagesFirstCode(languageCode, languages[i])) res = i;
             }
 
-            return -1;
+            return res;
         }
     }
 }
